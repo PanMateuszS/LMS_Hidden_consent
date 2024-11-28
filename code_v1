@@ -1,0 +1,43 @@
+//   (..18) Ukrywamy zgody i dadajemy przycisk by je odkryć 
+// Znajdujemy element z klasą 'lms-ui-icon-consent fa-fw' i traktujemy go jako przycisk
+let button = document.querySelector('.lms-ui-icon-consent.fa-fw');
+
+// Jeśli element z tą klasą istnieje
+if (button) {
+    // Ukrywamy wszystkie elementy z klasą 'lms-ui-separated-rows' na początku
+    let elements = document.querySelectorAll('.lms-ui-separated-rows');
+    elements.forEach(function(element) {
+        element.style.display = 'none'; // Ukrywamy elementy
+    });
+
+    // Ukrywamy wszystkie elementy z klasą 'lms-ui-icon-consent fa-fw' (poza przyciskiem)
+    let iconElements = document.querySelectorAll('.lms-ui-icon-consent.fa-fw');
+    iconElements.forEach(function(element) {
+        if (element !== button) { // Upewniamy się, że nie ukrywamy przycisku
+            element.style.display = 'none'; // Ukrywamy elementy z ikoną
+        }
+    });
+
+    // Dodajemy nasłuchiwacz kliknięcia na przycisk
+    button.addEventListener('click', function() {
+        // Przełączanie widoczności dla elementów 'lms-ui-separated-rows'
+        elements.forEach(function(element) {
+            if (element.style.display === 'none') {
+                element.style.display = 'table'; // Pokazujemy element
+            } else {
+                element.style.display = 'none'; // Ukrywamy element
+            }
+        });
+
+        // Przełączanie widoczności dla elementów 'lms-ui-icon-consent fa-fw', z wyjątkiem przycisku
+        iconElements.forEach(function(element) {
+            if (element !== button) { // Upewniamy się, że nie ukrywamy przycisku
+                if (element.style.display === 'none') {
+                    element.style.display = 'inline-block'; // Pokazujemy element
+                } else {
+                    element.style.display = 'none'; // Ukrywamy element
+                }
+            }
+        });
+    });
+}
