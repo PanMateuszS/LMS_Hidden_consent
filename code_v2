@@ -1,0 +1,34 @@
+//   (..18) Ukrywamy zgody i dadajemy przycisk by je odkryć 
+// Tworzymy przycisk i przypisujemy mu odpowiednią klasę
+let button = document.createElement('button');
+button.classList.add('lms-ui-button'); // Dodajemy klasę 'lms-ui-button'
+button.textContent = 'Zgody Pokaż/Ukryj';
+
+// Znajdujemy pierwszy element z klasą 'lms-ui-separated-rows'
+let firstElement = document.querySelector('.lms-ui-separated-rows');
+
+// Jeśli istnieje taki element, dodajemy przycisk przed nim
+if (firstElement) {
+    firstElement.parentNode.insertBefore(button, firstElement);
+}
+
+// Znajdujemy wszystkie elementy z klasą 'lms-ui-separated-rows'
+let elements = document.querySelectorAll('.lms-ui-separated-rows');
+
+// Ukrywamy elementy na początku
+elements.forEach(function(element) {
+    element.style.display = 'none';
+});
+
+// Dodajemy nasłuchiwacz kliknięcia na przycisk
+button.addEventListener('click', function() {
+    elements.forEach(function(element) {
+        // Jeśli element jest ukryty, pokazujemy go, w przeciwnym razie ukrywamy
+        if (element.style.display === 'none') {
+            element.style.display = 'table'; // Pokazujemy element
+        } else {
+            element.style.display = 'none'; // Ukrywamy element
+        }
+    });
+});
+
