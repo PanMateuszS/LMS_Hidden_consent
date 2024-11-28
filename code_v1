@@ -1,4 +1,4 @@
-//   (..18) Ukrywamy zgody i dadajemy przycisk by je odkryć 
+//   (..18) Ukrywamy zgody i dadajemy przycisk by je odkryć, przycisk robimy z ikony "zgody" 
 // Znajdujemy element z klasą 'lms-ui-icon-consent fa-fw' i traktujemy go jako przycisk
 let button = document.querySelector('.lms-ui-icon-consent.fa-fw');
 
